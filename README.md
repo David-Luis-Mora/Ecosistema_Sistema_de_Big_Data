@@ -92,19 +92,14 @@ Para ejecutar este proyecto es necesario tener instalado:
 
 Para verificar la instalación ejecutar:
 
-````bash
+```bash
 docker --version
 docker compose version
 git --version
-
-
-
-
----
+```
 
 # BLOQUE 6 — INSTALACIÓN
 
-```markdown
 ## Instalación del proyecto
 
 ### 1. Clonar el repositorio
@@ -112,7 +107,7 @@ git --version
 ```bash
 git clone https://github.com/usuario/ecosistema_sistema_de_big_data.git
 cd ecosistema_sistema_de_big_data
-````
+```
 
 2. Levantar los servicios
 
