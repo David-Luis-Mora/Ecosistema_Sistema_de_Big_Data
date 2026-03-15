@@ -109,6 +109,12 @@ git clone https://github.com/usuario/ecosistema_sistema_de_big_data.git
 cd ecosistema_sistema_de_big_data
 ```
 
+### 2 Crear la carpeta
+
+```bash
+mkdir warehouse
+```
+
 2. Levantar los servicios
 
 docker compose up -d
