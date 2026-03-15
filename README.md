@@ -247,3 +247,38 @@ Para comprobar que el sistema funciona correctamente se pueden realizar las sigu
 ```bash
 SELECT 1;
 ```
+
+#### Hive Metastore registra tablas
+
+```bash
+SHOW TABLES FROM hive.demo;
+```
+
+#### Consulta analítica
+
+```bash
+SELECT producto, SUM(importe)
+FROM hive.demo.ventas
+GROUP BY producto;
+```
+
+#### Superset visualiza datos
+
+#### Crear un gráfico en Superset usando la tabla:
+
+```bash
+hive.demo.ventas
+```
+
+---
+
+# BLOQUE 15 — TECNOLOGÍAS
+
+## Tecnologías utilizadas
+
+- Docker
+- Docker Compose
+- Apache Trino
+- Apache Hive Metastore
+- PostgreSQL
+- Apache Superset
