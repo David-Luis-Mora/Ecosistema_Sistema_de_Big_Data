@@ -148,8 +148,6 @@ Deberían aparecer los siguientes servicios:
 docker exec -it trino trino
 ```
 
-````
-
 ## Uso del sistema
 
 ### Acceder al cliente SQL de Trino
@@ -174,7 +172,6 @@ SHOW SCHEMAS FROM hive;
 
 # BLOQUE 9 — CREAR TABLA DE EJEMPLO
 
-
 ## Crear esquema y tabla de ejemplo
 
 ### Crear esquema
@@ -183,7 +180,6 @@ SHOW SCHEMAS FROM hive;
 CREATE SCHEMA IF NOT EXISTS hive.demo
 WITH (location = 'file:///opt/hive/data/warehouse/demo.db');
 ```
-````
 
 #### Crear tabla
 
@@ -219,7 +215,7 @@ SELECT * FROM hive.demo.ventas;
 
 ## Consulta analítica de ejemplo
 
-```sql
+```bash
 SELECT producto, SUM(importe) AS total
 FROM hive.demo.ventas
 GROUP BY producto
@@ -253,6 +249,6 @@ Para comprobar que el sistema funciona correctamente se pueden realizar las sigu
 
 ### Trino ejecuta consultas
 
-```sql
+```bash
 SELECT 1;
 ```
