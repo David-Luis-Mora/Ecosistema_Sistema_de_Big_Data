@@ -1,32 +1,52 @@
-Ecosistema Sistema de Big Data
+# Ecosistema Sistema de Big Data
 
-Este proyecto implementa un ecosistema básico de Big Data orientado al análisis de datos, utilizando herramientas comunes en arquitecturas modernas de datos.
+Este proyecto implementa un **ecosistema básico de Big Data orientado al análisis de datos**, utilizando herramientas comunes en arquitecturas modernas de datos.
 
-El objetivo es desplegar un entorno donde los datos se almacenan en un data lake, se consultan mediante SQL con Trino y se visualizan mediante Apache Superset.
+El objetivo es desplegar un entorno donde los datos se almacenan en un **Data Lake**, se consultan mediante **SQL con Trino** y se visualizan mediante **Apache Superset**.
 
-Todo el sistema se despliega mediante Docker Compose, permitiendo reproducir fácilmente el entorno completo.
+Todo el sistema se despliega mediante **Docker Compose**, lo que permite levantar el entorno completo de forma sencilla y reproducible.
 
-Arquitectura del sistema
+Este proyecto forma parte de una práctica donde se implementa un pipeline de análisis de datos utilizando tecnologías habituales del ecosistema Big Data.
+
+## Arquitectura del sistema
 
 El ecosistema está compuesto por los siguientes componentes:
 
-Herramienta Función
-PostgreSQL Base de datos utilizada por Hive Metastore
-Hive Metastore Catálogo de metadatos de tablas del data lake
-Trino Motor SQL distribuido para consultas analíticas
-Apache Superset Visualización de datos y creación de dashboards
-Flujo de datos
-Datos -> Hive Metastore -> Trino -> Superset -> Dashboard
+| Herramienta     | Función                                               |
+| --------------- | ----------------------------------------------------- |
+| PostgreSQL      | Base de datos utilizada por Hive Metastore            |
+| Hive Metastore  | Catálogo de metadatos de las tablas del Data Lake     |
+| Trino           | Motor SQL distribuido para consultas analíticas       |
+| Apache Superset | Herramienta de visualización y creación de dashboards |
 
-Los datos se almacenan en el data lake.
+### Flujo de datos
 
-Hive Metastore registra las tablas y metadatos.
+Data Lake  
+↓  
+Hive Metastore  
+↓  
+Trino (Motor SQL)  
+↓  
+Apache Superset  
+↓  
+Dashboard
 
-Trino permite consultar los datos mediante SQL.
+### Funcionamiento del pipeline
 
-Superset se conecta a Trino para crear dashboards.
+1. Los datos se almacenan en el **Data Lake**.
+2. **Hive Metastore** registra las tablas y sus metadatos.
+3. **Trino** permite realizar consultas SQL sobre los datos almacenados.
+4. **Superset** se conecta a Trino para visualizar los datos y generar dashboards.
 
-Estructura del repositorio
+### Funcionamiento del pipeline
+
+1. Los datos se almacenan en el **Data Lake**.
+2. **Hive Metastore** registra las tablas y sus metadatos.
+3. **Trino** permite realizar consultas SQL sobre los datos almacenados.
+4. **Superset** se conecta a Trino para visualizar los datos y generar dashboards.
+
+## Estructura del repositorio
+
 ECOSISTEMA_SISTEMA_DE_BIG_DATA
 
 ├── docker-compose.yml
@@ -44,197 +64,199 @@ ECOSISTEMA_SISTEMA_DE_BIG_DATA
 │ └── node.properties
 
 └── warehouse
-Descripción de carpetas
 
-superset/
-Contiene el Dockerfile personalizado para Superset con soporte para Trino.
+### Descripción de carpetas
 
-trino/etc/
-Configuración del motor SQL Trino.
+**superset/**  
+Contiene el Dockerfile personalizado de Superset que permite conectarse con Trino.
 
-catalog/hive.properties → catálogo Hive
+**trino/etc/**  
+Contiene la configuración del motor SQL Trino.
 
-config.properties → configuración del coordinador
+- `catalog/hive.properties` → configuración del catálogo Hive
+- `config.properties` → configuración del coordinador
+- `node.properties` → configuración del nodo
+- `jvm.config` → parámetros de la JVM
 
-node.properties → configuración del nodo
+**warehouse/**  
+Directorio utilizado como Data Lake donde se almacenan los datos.
 
-jvm.config → parámetros JVM
+## Requisitos previos
 
-warehouse/
-Directorio donde se almacenan los datos del data lake.
+Para ejecutar este proyecto es necesario tener instalado:
 
-Requisitos previos
+- Docker
+- Docker Compose
+- Git
+- Ubuntu / Windows con WSL2 / macOS
 
-Antes de ejecutar el proyecto es necesario tener instalado:
+Para verificar la instalación ejecutar:
 
-Docker
-
-Docker Compose
-
-Git
-
-Ubuntu / Windows con WSL2 / macOS
-
-Verificar instalación:
-
+````bash
 docker --version
 docker compose version
 git --version
-Instalación del proyecto
 
-Clonar el repositorio:
 
+
+
+---
+
+# BLOQUE 6 — INSTALACIÓN
+
+```markdown
+## Instalación del proyecto
+
+### 1. Clonar el repositorio
+
+```bash
 git clone https://github.com/usuario/ecosistema_sistema_de_big_data.git
 cd ecosistema_sistema_de_big_data
+````
 
-Levantar los servicios:
+2. Levantar los servicios
 
 docker compose up -d
 
-Verificar que los contenedores están activos:
+3. Verificar contenedores
 
 docker ps
 
 Deberían aparecer los siguientes servicios:
 
-superset
-trino
-hive-metastore
-hive-metastore-db
-Acceso a las herramientas
-Servicio URL
-Superset http://localhost:8088
+- superset
+- trino
+- hive-metastore
+- hive-metastore-db
 
-Trino UI http://localhost:8080
-Uso del sistema
-Acceder a Trino
+---
 
-Entrar al cliente SQL de Trino:
+# BLOQUE 7 — ACCESO A LAS HERRAMIENTAS
 
+````markdown
+## Acceso a las herramientas
+
+| Servicio        | URL                   |
+| --------------- | --------------------- |
+| Apache Superset | http://localhost:8088 |
+| Trino UI        | http://localhost:8080 |
+
+## Uso del sistema
+
+### Acceder al cliente SQL de Trino
+
+```bash
 docker exec -it trino trino
+```
+````
 
-Ver catálogos disponibles:
+## Uso del sistema
 
+### Acceder al cliente SQL de Trino
+
+```bash
+docker exec -it trino trino
+```
+
+### Ver catálogos disponibles
+
+```bash
 SHOW CATALOGS;
+```
 
-Ver schemas de Hive:
+#### Ver schemas del catálogo Hive
 
+```bash
 SHOW SCHEMAS FROM hive;
-Crear esquema y tabla de ejemplo
+```
 
-Crear el esquema:
+---
 
+# BLOQUE 9 — CREAR TABLA DE EJEMPLO
+
+````markdown
+## Crear esquema y tabla de ejemplo
+
+### Crear esquema
+
+```bash
 CREATE SCHEMA IF NOT EXISTS hive.demo
 WITH (location = 'file:///opt/hive/data/warehouse/demo.db');
+```
+````
 
-Crear tabla de ventas:
+#### Crear tabla
 
+```bash
 CREATE TABLE hive.demo.ventas (
-id INTEGER,
-producto VARCHAR,
-importe DOUBLE,
-fecha DATE
+    id INTEGER,
+    producto VARCHAR,
+    importe DOUBLE,
+    fecha DATE
 )
 WITH (format = 'PARQUET');
+```
 
-Insertar datos de ejemplo:
+### Insertar datos
 
+```bash
 INSERT INTO hive.demo.ventas VALUES
 (1, 'Portatil', 899.99, DATE '2026-03-15'),
 (2, 'Raton', 25.50, DATE '2026-03-15'),
 (3, 'Teclado', 49.99, DATE '2026-03-16'),
 (4, 'Monitor', 199.90, DATE '2026-03-16');
+```
 
-Consultar datos:
+Consultar datos
 
-SELECT \* FROM hive.demo.ventas;
-Consulta analítica de ejemplo
+```bash
+SELECT * FROM hive.demo.ventas;
+```
 
-Ejemplo de agregación de ventas por producto:
+---
 
+# BLOQUE 10 — CONSULTA ANALÍTICA
+
+## Consulta analítica de ejemplo
+
+```sql
 SELECT producto, SUM(importe) AS total
 FROM hive.demo.ventas
 GROUP BY producto
 ORDER BY total DESC;
-Visualización en Superset
+```
 
-Acceder a:
+Reconstruir la imagen:
 
-http://localhost:8088
-
-Conectar Superset con Trino.
-
-Crear un dataset usando:
-
-hive.demo.ventas
-
-Crear un gráfico:
-
-Tipo de gráfico:
-
-Bar Chart
-
-Configuración:
-
-X-axis → producto
-Metric → SUM(importe)
-
-Guardar el gráfico.
-
-Crear un dashboard.
-
-Construcción personalizada de Superset
-
-El contenedor de Superset se construye con un Dockerfile personalizado ubicado en:
-
-superset/Dockerfile
-
-Este Dockerfile añade dependencias necesarias para conectar Superset con Trino.
-
-FROM apache/superset:latest
-
-USER root
-
-RUN /usr/local/bin/pip install --target /app/.venv/lib/python3.10/site-packages "SQLAlchemy==1.4.54" \
- && /usr/local/bin/pip install --target /app/.venv/lib/python3.10/site-packages --no-deps "trino[sqlalchemy]"
-
-USER superset
-
-Reconstruir la imagen si se modifica:
-
+```bash
 docker compose build
 docker compose up -d
-Parar el sistema
+```
 
-Detener todos los contenedores:
+---
 
+# BLOQUE 13 — PARAR EL SISTEMA
+
+````markdown
+## Parar el sistema
+
+Para detener todos los contenedores ejecutar:
+
+```bash
 docker compose down
-Validación del sistema
+```
+````
 
-Para comprobar que el sistema funciona correctamente se pueden realizar las siguientes pruebas:
+# BLOQUE 14 — VALIDACIÓN
 
-1. Trino ejecuta consultas SQL
-   SELECT 1;
-2. Hive Metastore registra tablas
-   SHOW TABLES FROM hive.demo;
-3. Consulta analítica
-   SELECT producto, SUM(importe)
-   FROM hive.demo.ventas
-   GROUP BY producto;
-4. Superset visualiza datos
+````markdown
+## Validación del sistema
 
-Crear un gráfico en Superset usando la tabla hive.demo.ventas.
+Para comprobar que el sistema funciona correctamente se pueden realizar las siguientes pruebas.
 
-Tecnologías utilizadas
+### Trino ejecuta consultas
 
-Docker
-
-Docker Compose
-
-Apache Trino
-
-Apache Hive Metastore
-
-PostgreSQL
-
-Apache Superset
+```sql
+SELECT 1;
+```
+````
