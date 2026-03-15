@@ -237,7 +237,6 @@ docker compose up -d
 
 # BLOQUE 13 — PARAR EL SISTEMA
 
-````markdown
 ## Parar el sistema
 
 Para detener todos los contenedores ejecutar:
@@ -245,11 +244,12 @@ Para detener todos los contenedores ejecutar:
 ```bash
 docker compose down
 ```
+
 ````
 
 # BLOQUE 14 — VALIDACIÓN
 
-````markdown
+
 ## Validación del sistema
 
 Para comprobar que el sistema funciona correctamente se pueden realizar las siguientes pruebas.
