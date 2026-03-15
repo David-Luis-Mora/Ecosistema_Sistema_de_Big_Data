@@ -133,7 +133,6 @@ Deberían aparecer los siguientes servicios:
 
 # BLOQUE 7 — ACCESO A LAS HERRAMIENTAS
 
-````markdown
 ## Acceso a las herramientas
 
 | Servicio        | URL                   |
@@ -148,6 +147,7 @@ Deberían aparecer los siguientes servicios:
 ```bash
 docker exec -it trino trino
 ```
+
 ````
 
 ## Uso del sistema
@@ -174,7 +174,7 @@ SHOW SCHEMAS FROM hive;
 
 # BLOQUE 9 — CREAR TABLA DE EJEMPLO
 
-````markdown
+
 ## Crear esquema y tabla de ejemplo
 
 ### Crear esquema
@@ -245,10 +245,7 @@ Para detener todos los contenedores ejecutar:
 docker compose down
 ```
 
-````
-
 # BLOQUE 14 — VALIDACIÓN
-
 
 ## Validación del sistema
 
@@ -259,4 +256,3 @@ Para comprobar que el sistema funciona correctamente se pueden realizar las sigu
 ```sql
 SELECT 1;
 ```
-````
