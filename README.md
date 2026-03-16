@@ -38,12 +38,6 @@ Dashboard
 3. **Trino** permite realizar consultas SQL sobre los datos almacenados.
 4. **Superset** se conecta a Trino para visualizar los datos y generar dashboards.
 
-### Funcionamiento del pipeline
-
-1. Los datos se almacenan en el **Data Lake**.
-2. **Hive Metastore** registra las tablas y sus metadatos.
-3. **Trino** permite realizar consultas SQL sobre los datos almacenados.
-4. **Superset** se conecta a Trino para visualizar los datos y generar dashboards.
 
 ## Estructura del repositorio
 
@@ -98,7 +92,7 @@ docker compose version
 git --version
 ```
 
-# BLOQUE 6 — INSTALACIÓN
+# INSTALACIÓN
 
 ## Instalación del proyecto
 
@@ -132,7 +126,7 @@ Deberían aparecer los siguientes servicios:
 
 ---
 
-# BLOQUE 7 — ACCESO A LAS HERRAMIENTAS
+# ACCESO A LAS HERRAMIENTAS
 
 ## Acceso a las herramientas
 
@@ -171,7 +165,7 @@ SHOW SCHEMAS FROM hive;
 
 ---
 
-# BLOQUE 9 — CREAR TABLA DE EJEMPLO
+# CREAR TABLA DE EJEMPLO
 
 ## Crear esquema y tabla de ejemplo
 
@@ -212,7 +206,7 @@ SELECT * FROM hive.demo.ventas;
 
 ---
 
-# BLOQUE 10 — CONSULTA ANALÍTICA
+# CONSULTA ANALÍTICA
 
 ## Consulta analítica de ejemplo
 
@@ -232,7 +226,7 @@ docker compose up -d
 
 ---
 
-# BLOQUE 13 — PARAR EL SISTEMA
+# EL SISTEMA
 
 ## Parar el sistema
 
@@ -242,7 +236,7 @@ Para detener todos los contenedores ejecutar:
 docker compose down
 ```
 
-# BLOQUE 14 — VALIDACIÓN
+# VALIDACIÓN
 
 ## Validación del sistema
 
@@ -278,7 +272,7 @@ hive.demo.ventas
 
 ---
 
-# BLOQUE 15 — TECNOLOGÍAS
+# TECNOLOGÍAS
 
 ## Tecnologías utilizadas
 
